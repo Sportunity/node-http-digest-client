@@ -25,9 +25,11 @@ var HTTPDigest = function () {
   //
   HTTPDigest.prototype.request = function (options, callback) {
     var self = this;
-    http.request(options, function (res) {
+    var req = http.request(options, function (res) {
       self._handleResponse(options, res, callback);
-    }).end();
+    });
+    req.end();
+    return req;
   };
 
   //
